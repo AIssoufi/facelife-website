@@ -1,0 +1,12 @@
+#header-comp {
+  background-color: var(--secondary-background);
+  display: flex;
+  justify-content: space-between;
+
+  .item {
+    width: 100%;
+    &.center-menu {
+      max-width: 680px;
+    }
+  }
+}
