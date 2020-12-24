@@ -1,5 +1,6 @@
 // Dependencies
-import React, { useState } from "react";
+import React from "react";
+import { NavLink } from "react-router-dom";
 
 // Icons
 import { ReactComponent as FriendsIcon } from './icons/friends.svg';
@@ -12,31 +13,48 @@ import { ReactComponent as WatchIcon } from './icons/watch.svg';
 import './NavMenu.scss';
 
 const NavMenu = props => {
-  const [currentItem, setCurrentItem] = useState(0);
   const menuItems = [
-    { icon: <HomeIcon />, tooltipText: "Accueil" },
-    { icon: <FriendsIcon />, tooltipText: "Amis" },
-    { icon: <WatchIcon />, tooltipText: "Watch" },
-    { icon: <MarketPlaceIcon />, tooltipText: "Marketplace" },
-    { icon: <GroupsIcon />, tooltipText: "Groupes" }
+    {
+      icon: <HomeIcon />,
+      url: "/",
+      tooltipText: "Accueil"
+    },
+    {
+      icon: <FriendsIcon />,
+      url: "/friends",
+      tooltipText: "Amis"
+    },
+    {
+      icon: <WatchIcon />,
+      url: "/watch",
+      tooltipText: "Watch"
+    },
+    {
+      icon: <MarketPlaceIcon />,
+      url: "/marketplace",
+      tooltipText: "Marketplace"
+    },
+    {
+      icon: <GroupsIcon />,
+      url: "/groups",
+      tooltipText: "Groupes"
+    }
   ];
 
   return (
     <ul id="nav-menu-comp">
-      {menuItems.map((item, index) => {
-        const isActive = (index == currentItem);
-
+      {menuItems.map(item => {
         return (
-          <li
-            className={`item${isActive ? ' active': ''}`}
-            onClick={() => setCurrentItem(index)}
-          >
-            <div className="icon">
-              {item.icon}
-            </div>
-            <div className="tooltip">
-              {item.tooltipText}
-            </div>
+          <li className="item">
+            <NavLink exact to={item.url} activeClassName="active" className="link">
+              <div className="icon">
+                  {item.icon}
+
+              </div>
+              <div className="tooltip">
+                {item.tooltipText}
+              </div>
+            </NavLink>
           </li>
         );
       })}

@@ -1,0 +1,33 @@
+:root {
+  --primary-background: #2d88ff;
+  --secondary-background: #252526;
+  --secondary-icon: #b0b3b8;
+  --secondary-text: rgb(228, 230, 235);
+
+  background-color: black;
+}
+
+body {
+  height: 100vh;
+}
+
+p {
+  color: var(--secondary-text);
+}
+
+#root, #app-comp {
+  height: 100%;
+}
+
+#app-comp {
+  & > main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+
+    .placeholder-text {
+      font-size: 3em;
+    }
+  }
+}
